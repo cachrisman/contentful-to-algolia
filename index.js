@@ -103,7 +103,7 @@ webhook.on("publish", async function (payload) {
   subsequentSync()
 })
 
-webhook.listen(port)
+webhook.listen(PORT)
 
 // if the next sync token hasn't been set, run the initial sync of content into algolia
 if (!nextSyncToken)

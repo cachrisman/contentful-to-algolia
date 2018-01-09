@@ -49,7 +49,7 @@ function initialSync() {
   contentful_client.sync(options).then((response) => {
     let entries = response.entries
     nextSyncToken = response.nextSyncToken
-    fs.writeFileSync(data_dir + file, nextSyncToken)
+    fs.writeFileSync(data_dir + sync_token_file, nextSyncToken)
 
     // transform the contentful entries to include an objectID (which Algolia wants)
     // and to exclude the extraneous data (like the sys object)
@@ -74,7 +74,7 @@ async function subsequentSync () {
   contentful_client.sync(options).then((response) => {
     let new_or_updated_entries = response.entries
     nextSyncToken = response.nextSyncToken
-    fs.writeFileSync(data_dir + file, nextSyncToken)
+    fs.writeFileSync(data_dir + sync_token_file, nextSyncToken)
 
     // same as before: transform the contentful entries to include an objectID (which Algolia
     // wants) and to exclude the extraneous data (like the sys object)
